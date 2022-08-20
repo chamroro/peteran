@@ -5,6 +5,7 @@ import QnaSearchBox from "../components/search/QnA";
 import SearchPageStyle from "./Search.module.css";
 import Text from "../components/Text";
 import VeteranSearchBox from "../components/search/Veteran";
+import Layout from "../components/Layout";
 
 function SearchPage(){
   const [currentTab, setCurrentTab] = useState('all') // [all, qna, consulting]
@@ -14,7 +15,7 @@ function SearchPage(){
       <div className={style.containers}>
         <Navbars />
 
-        <div className={SearchPageStyle.SearchPageLayout}>
+        <Layout>
           {/* TODO: search icon */}
           <div className={SearchPageStyle.SearchInputDiv}>
             <input
@@ -68,7 +69,7 @@ function SearchPage(){
             </div>
           </div>
 
-        </div>
+        </Layout>
       </div>
     </div>
   )

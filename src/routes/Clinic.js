@@ -4,8 +4,9 @@ import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
 import VeteranSearchBox from "../components/clinic/Veteran";
+import Layout from "../components/Layout";
 
-function QnAPage() {
+function ClinicPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
 
   return (
@@ -13,7 +14,7 @@ function QnAPage() {
       <div className={style.containers}>
         <Navbars />
 
-        <div className={QnAPageStyle.QnAPageLayout}>
+        <Layout>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{display: 'flex', flexDirection: 'row', flex: 1}}>
               <div style={{marginRight: 32}}>
@@ -51,10 +52,10 @@ function QnAPage() {
             <VeteranSearchBox/>
           </div>
 
-        </div>
+        </Layout>
       </div>
     </div>
   )
 
 }
-export default QnAPage;
+export default ClinicPage;

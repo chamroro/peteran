@@ -5,6 +5,7 @@ import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
 import QnaSearchBox from "../components/search/QnA";
 import WriteIcon from "../assets/b2.png";
+import Layout from "../components/Layout";
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
@@ -14,7 +15,7 @@ function QnAPage() {
       <div className={style.containers}>
         <Navbars />
 
-        <div className={QnAPageStyle.QnAPageLayout}>
+        <Layout>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{display: 'flex', flexDirection: 'row', flex: 1}}>
               <div style={{marginRight: 32}}>
@@ -60,7 +61,7 @@ function QnAPage() {
             <QnaSearchBox/>
           </div>
 
-        </div>
+        </Layout>
       </div>
     </div>
   )
