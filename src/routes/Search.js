@@ -32,6 +32,7 @@ function SearchPage() {
     axios.get(`${API_ENDPOINT}/search/veteran/all/${searchKeyword}?take=10`)
       .then(res => {
         setVeteranSearchResult(res.data)
+        console.log(res.data);
       }).catch(() => {
       alert('검색 에러!')
     })
@@ -111,14 +112,14 @@ function SearchPage() {
 
               <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
                 {
-                  veteranSearchResult.map( () => (
-                  <VeteranSearchBox
-                  name={'이정연 수의사'}
-                  location={'하나 동물 병원'}
-                  tags={['건강 검진', '슬개골 수술']}
-                  reviewNumber={4}
-                  availableStatus={true}
-                  />
+                  veteranSearchResult.map((veteran) => (
+                    <VeteranSearchBox
+                      name={veteran.name + ' ' + (veteran.type === 'vet' ? '수의사' : '훈련사')}
+                      location={veteran.location}
+                      tags={veteran.field.split(',')}
+                      reviewNumber={veteran.reservations.length}
+                      availableStatus={true}
+                    />
                   ))
                 }
               </div>
