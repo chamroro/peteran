@@ -4,9 +4,11 @@ import Text from "../Text";
 import moment from "moment";
 import {Link} from "react-router-dom";
 
-function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswers }) {
-  const duration = moment.duration(moment(createDatetime).diff(moment()));
+function QnaSearchBox ({ id, title, author, createDatetime, answers }) {
+  const duration = moment.duration(moment().diff(moment(createDatetime)));
   const hours = duration.asHours();
+
+  const firstAnswerVeteran = answers.length ? answers[0].veteran : {};
 
   return (
     <div className={searchStyle.SearchBoxDiv}>
@@ -35,7 +37,7 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
               {author}
             </div>
             <div style={{color: 'gray'}}>
-              {hours} 시간 전에 작성됨
+              {Number(hours).toFixed()} 시간 전에 작성됨
             </div>
           </div>
         </div>
@@ -44,13 +46,14 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
           alignItems: 'flex-end'}}>
           <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
             {
-              otherAnswers ? (
+              answers.length ? (
                 <>
-                  <div style={{textAlign: 'right', flex: 1, marginRight:19}}>
+               
+                  <div style={{textAlign: 'right', flex: 1}}>
                     답변
                   </div>
                   <div style={{color: "#238D9B"}}>
-                    {veteran}
+                  {firstAnswerVeteran.name}
                   </div>
                  
                 </>
@@ -61,7 +64,7 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
               )
             }
           </div>
-          다른 전문가 답변 {otherAnswers}개
+          다른 전문가 답변 {answers.length}개
         </div>
       </div>
 
