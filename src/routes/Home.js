@@ -10,9 +10,7 @@ function Home() {
   const [searchKeyword, setSearchKeyword] = useState('');
   
   return (
-  
       <div className={style.background}>
-
         <img 
           style={{
             width: "100%",

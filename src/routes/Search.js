@@ -1,17 +1,40 @@
 import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import QnaSearchBox from "../components/search/QnAInfoBox";
 import SearchPageStyle from "./Search.module.css";
 import VeteranSearchBox from "../components/search/VeteranInfoBox";
 import Layout from "../components/Layout";
 import SearchSectionHeader from "../components/search/search.section.header";
 import Footers from "../components/Footer"
-import { NavLink } from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
+import axios from "axios";
+import {API_ENDPOINT} from "../config";
 
+function SearchPage() {
+  const location = useLocation();
+  const initKeyword = new URLSearchParams(location.search).get('keyword');
+  const [searchKeyword, setSearchKeyword] = useState(initKeyword)
 
-function SearchPage(){
   const [currentTab, setCurrentTab] = useState('all') // [all, qna, consulting]
+
+  useEffect(() => {
+    axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
+      .then(res => {
+        console.log(res.data)
+      }).catch(() => {
+        alert('검색 에러!')
+    })
+  }, [initKeyword])
+
+  function handleSubmit() {
+    axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
+      .then(res => {
+        console.log(res.data)
+      }).catch(() => {
+      alert('검색 에러!')
+    })
+  }
 
   return (
     <div>
@@ -19,16 +42,17 @@ function SearchPage(){
         <Navbars />
 
         <Layout>
-          {/* TODO: search icon */}
           <div className={SearchPageStyle.SearchInputDiv}>
-            <input
-              className={SearchPageStyle.SearchInput}
-              value={'슬개골 탈구'}
-
-            />
-            <div className={SearchPageStyle.SearchIcon}><NavLink to="/search"><img src={ require('../assets/search.png') } /></NavLink></div>
-
-
+            <form onSubmit={handleSubmit}>
+              <input
+                className={SearchPageStyle.SearchInput}
+                value={searchKeyword}
+                onChange={e => setSearchKeyword(e.target.value)}
+              />
+            </form>
+            <div className={SearchPageStyle.SearchIcon}>
+              <NavLink to="/search"><img src={ require('../assets/search.png') } /></NavLink>
+            </div>
           </div>
 
           <div className={SearchPageStyle.SearchTabDiv}>
