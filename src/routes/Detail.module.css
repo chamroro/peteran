@@ -7,3 +7,79 @@
    
 }
 
+.answer{
+    border-collapse: collapse;
+    margin-bottom: 52px;
+}
+
+.cardHeader{
+    width: 1050px;
+    border-radius: 10px 10px 0px 0px ;
+    border: 1px solid  rgba(0, 0, 0, 0.2);
+    padding: 25px 49px 13px 45px;
+    border-bottom-color:rgba(0, 0, 0, 0)
+}
+.cardVeteran{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+   
+}
+
+hr{
+    margin-top: 19px;
+    margin-bottom: 29px;
+    width: 950px;
+}
+
+.writeDate{
+    margin-top: 99px;
+    text-align: right;
+}
+.cardFooter{
+    display: flex;
+    justify-content: space-between;
+    height: 123px;
+    width: 1050px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 0px 0px 10px 10px;
+    padding: 39px 45px 0px 45px;
+}
+
+.cardFooter h3{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 5px;
+    /* or 125% */
+
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 0.25px;
+
+    color: #000000;
+
+}
+
+.cardFooter button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    gap: 10px;
+
+    height: 44px;
+    background: #238D9B;
+    border-radius: 10px;
+    color: white;
+    margin-left: 43px;
+}
+
+.review{
+
+    text-align: right;
+    display: block;
+}
+
