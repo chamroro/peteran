@@ -17,6 +17,21 @@ function Home() {
   }, []);
   console.log(movies);
   return (
+    <div className={style.background}>
+
+       <img 
+        style={{
+          width: "100%",
+          height:"598px",
+          position: "absolute",
+          top:"0px",
+          left:"0px",
+          zIndex:-1
+        }}
+      src={ require('../assets/yellowrec.png') } />
+      <Navbars />
+      <div className={style.greyBackground}>
+      </div>
     <div className={style.container}>
       
       <img 
@@ -28,7 +43,7 @@ function Home() {
           zIndex:-1
         }}
       src={ require('../assets/homebg.png') } />
-      <Navbars />
+    
       <div className={style.blockText}>
         <div><Text n="B" text="반려동물 상담 👋" color="#238D9B"/></div>
         <div style={{paddingTop: "21px", paddingBottom: "24px;"}}><Text n="h2" text="진료부터 행동교정까지," color="#238D9B"/></div>
@@ -85,8 +100,7 @@ function Home() {
               <img className={style.buttonIcon} src={ require('../assets/b2.png') }/>
             <Text n="B" text="다른 질문 더 보러가기" color="#fff"/></button>
       </div>
-      <div className={style.greyBackground}>
-      </div>
+     
       <div className={style.home3}>
        
         <div><Text n="h2" text="나를 브랜딩 할 수 있는" color="#238D9B"/></div>
@@ -117,6 +131,7 @@ function Home() {
       </div>
       <img className={style.home3img} src={ require('../assets/home3.png') } />
     </div> 
+    </div>
   );
 }
 
