@@ -6,6 +6,7 @@ import SearchPageStyle from "./Search.module.css";
 import VeteranSearchBox from "../components/search/VeteranInfoBox";
 import Layout from "../components/Layout";
 import SearchSectionHeader from "../components/search/search.section.header";
+import Footers from "../components/Footer"
 
 function SearchPage(){
   const [currentTab, setCurrentTab] = useState('all') // [all, qna, consulting]
@@ -76,6 +77,7 @@ function SearchPage(){
           </div>
 
         </Layout>
+        <Footers />
       </div>
     </div>
   )

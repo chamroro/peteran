@@ -1,0 +1,41 @@
+
+.footer {
+    z-index:100;
+    width: 100%;
+    margin: 0 auto;
+    height: 72px;
+    height: 160px;
+    background: #238D9B;
+    padding: 14px 0;
+    align-items: center;
+  }
+  
+    .wrapper {
+        margin: 0 auto;
+        max-width: 1050px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:50px;
+  }
+.footer .logo{
+    width: 126px;
+    height: 28px;
+    margin-top: auto;
+    vertical-align: bottom;
+}
+
+.sns{
+    width: 136px;
+}
+
+
+
+
+
+  
+
+  .nav a:hover {
+    color: rgba(255,255,255,.4);
+
+  }

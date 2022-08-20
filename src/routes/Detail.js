@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import style from "./Detail.module.css";
 import Navbars from "../components/Navbars"
 import Text from "../components/Text";
+import Footers from "../components/Footer"
 
 function Detail(){
     const {id} = useParams();
@@ -71,7 +72,8 @@ function Detail(){
                     </div>
                 </div>
              
-        </div>
+            </div>
+            <Footers />
         </div>
     );
 }

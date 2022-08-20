@@ -6,6 +6,7 @@ import Text from "../components/Text";
 import VeteranSearchBox from "../components/clinic/VeteranInfoBox";
 import Layout from "../components/Layout";
 import styled from "styled-components";
+import Footers from "../components/Footer"
 
 function ClinicPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
@@ -82,6 +83,7 @@ function ClinicPage() {
           </div>
 
         </Layout>
+        <Footers />
       </div>
     </div>
   )

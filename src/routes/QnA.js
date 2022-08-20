@@ -7,6 +7,7 @@ import QnaSearchBox from "../components/qna/QnAInfoBox";
 import WriteIcon from "../assets/b2.png";
 import Layout from "../components/Layout";
 import styled from "styled-components";
+import Footers from "../components/Footer"
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
@@ -87,6 +88,7 @@ function QnAPage() {
           </div>
 
         </Layout>
+        <Footers />
       </div>
     </div>
   )
