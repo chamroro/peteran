@@ -1,5 +1,5 @@
 import searchStyle from './search.module.css';
-import QuestionIcon from '../../assets/question_icon.png';
+import QuestionIcon from '../../assets/Q.png';
 import Text from "../Text";
 
 function QnaSearchBox (questionSearchResult) {
