@@ -9,6 +9,7 @@ import Detail from "./routes/Detail";
 import QnA from "./routes/QnA";
 import Mypage from "./routes/Mypage";
 import Clinic from "./routes/Clinic";
+import SearchPage from "./routes/Search";
 
 function App() {
   return <Router>
@@ -19,7 +20,10 @@ function App() {
     <Route exact path="/qna">
         <QnA />
       </Route>
-     
+
+      <Route exact path="/search">
+        <SearchPage />
+      </Route>
      
       <Route exact path="/clinic">
         <Clinic />

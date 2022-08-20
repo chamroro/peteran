@@ -1,0 +1,73 @@
+.SearchPageLayout {
+    /* TODO: 수정 예정 */
+    /* TODO: to be responsive*/
+    padding: 10px 240px;
+}
+
+@media (max-width: 991px) {
+    .SearchPageLayout {
+        padding: 10px 60px;
+    }
+}
+
+
+.SearchInputDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 28px;
+}
+
+.SearchInput {
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    width: 700px;
+    height: 60px;
+
+    /* Primary Variant/- 238D9B - 500 */
+
+    border: 2px solid #238D9B;
+    border-radius: 10px;
+
+    /* Body/B1/M-18px */
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: 0.5px;
+}
+
+.SearchTabDiv {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+
+    max-width: 700px;
+}
+
+.SearchTab {
+    flex: 1;
+    text-align: center;
+
+    /* Subtitle/S1/M-20px */
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height, or 120% */
+
+    letter-spacing: 0.15px;
+
+    border-bottom: solid #E7E7E7 5px;
+    margin-bottom: 32px;
+    padding: 12px;
+}
