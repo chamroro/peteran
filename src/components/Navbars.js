@@ -12,10 +12,6 @@ function Navbars () {
         <div className={styles.nav}>
         <span>
             <img 
-                style={{
-                    width:"126px",
-                    marginLeft: "125px"
-                }}
                 src={ require('../assets/logo.png') }/>
         </span>
             <ul>

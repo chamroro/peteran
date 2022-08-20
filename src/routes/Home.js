@@ -17,7 +17,7 @@ function Home() {
   }, []);
   console.log(movies);
   return (
-    <div className={style.containers}>
+    <div className={style.container}>
       
       <img 
         style={{
@@ -31,15 +31,18 @@ function Home() {
       <Navbars />
       <div className={style.blockText}>
         <div><Text n="B" text="반려동물 상담 👋" color="#238D9B"/></div>
-        <div><Text n="h2" text="진료부터 행동교정까지," color="#238D9B"/></div>
+        <div style={{paddingTop: "21px", paddingBottom: "24px;"}}><Text n="h2" text="진료부터 행동교정까지," color="#238D9B"/></div>
         <div><Text n="h2" text="처음부터 페테랑하자" color="#238D9B"/></div>
         
-        <div><Text n="b1" text="주말 야간에 우리집 댕댕이가 아프다면?" color="#495057"/></div>
+        <div style={{paddingTop: "24px"}}><Text n="b1" text="주말 야간에 우리집 댕댕이가 아프다면?" color="#495057"/></div>
         <div><Text n="b1" text="기다림 없이 수의사와 연결해드릴게요." color="#495057"/></div>
-        <button className={style.redButton}><Text n="B" text="응급상담하기" color="#fff"/></button>
+        <button style={{marginTop: "34px"}} className={style.redButton}>
+          <img className={style.buttonIcon} src={ require('../assets/b1.png') }/>
+          <Text n="B" text="응급상담하기" color="#fff"/>
+        </button>
       </div>
       <div className={style.searchBar}>
-        <input placeholder="검색"></input>
+        <input style={{paddingLeft: "10px"}} placeholder="검색"></input>
       </div>
 
       <div className={style.home2}>
@@ -75,23 +78,40 @@ function Home() {
       </div>
       <div className={style.home2side}>
         <div><Text n="c" text="서비스 소개" color="#00856F"/></div>
-        <div style={{marginTop:"10px", marginBottom:"25px"}}><Text n="h4" text="우리집 고양이의
-행동이 궁금하다면?" color="#00856F"/></div>
+        <div style={{marginTop:"10px"}}><Text n="h4" text="우리집 고양이의" color="#00856F"/></div>
+        <div style={{marginBottom:"25px"}}><Text n="h4" text="행동이 궁금하다면?" color="#00856F"/></div>
         <button style={{
-          backgroundColor:"#1D6A72"}} className={style.colorButton}><Text n="B" text="다른 질문 더 보러가기" color="#fff"/></button>
+          backgroundColor:"#1D6A72"}} className={style.colorButton}>
+              <img className={style.buttonIcon} src={ require('../assets/b2.png') }/>
+            <Text n="B" text="다른 질문 더 보러가기" color="#fff"/></button>
       </div>
       <div className={style.greyBackground}>
       </div>
       <div className={style.home3}>
        
         <div><Text n="h2" text="나를 브랜딩 할 수 있는" color="#238D9B"/></div>
-        <div><Text n="h2" text="페테랑" color="#238D9B"/></div>
+        <div><h2 style={{
+          fontWeight: "700",
+          fontSize: "52px",
+          lineHeight: "52px",
+          letterSpacing: "-0.5px",
+          color: "#212529",
+          margin: "10px 0px"
+        }}>펫테랑</h2></div>
         
-        <div><Text n="b1" text="반려동물 전문가에 대한 소비자의 접근성을 높여," color="#495057"/></div>
-        <div><Text n="b1" text="펫테크 시장 전체 규모를 키웁니다." color="#495057"/></div>
+        <div style={{
+          color: "#495057",
+          marginTop:"18px",
+        }}><Text n="b1" text="반려동물 전문가에 대한 소비자의 접근성을 높여," color="#495057"/></div>
+        <div style={{
+          color: "#495057",
+          marginBottom:"88px",
+        }}><Text n="b1" text="펫테크 시장 전체 규모를 키웁니다." color="#495057"/></div>
         <button style={{
           backgroundColor:"#238D9B"}}
-          className={style.colorButton}><Text n="B" text="페테랑 전문가로서 함께하기" color="#fff"/></button>
+          className={style.colorButton}>
+              <img className={style.buttonIcon} src={ require('../assets/b3.png') }/>
+              <Text n="B" text="페테랑 전문가로서 함께하기" color="#fff"/></button>
         
       </div>
       <img className={style.home3img} src={ require('../assets/home3.png') } />
