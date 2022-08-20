@@ -26,7 +26,7 @@ function QnaSearchBox (questionSearchResult) {
               </span>
               뭉이
             </div>
-            <div>
+            <div style={{color: 'gray'}}>
               2시간 전에 작성됨
             </div>
           </div>
