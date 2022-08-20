@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import style from "./Home.module.css";
-import Movie from "../components/Movie";
 import Text from "../components/Text";
 import Navbars from "../components/Navbars"
 import Footers from "../components/Footer"
-import { NavLink } from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 function Home() {
+  const history = useHistory()
+  const [searchKeyword, setSearchKeyword] = useState('');
   
   return (
   
@@ -60,8 +61,13 @@ function Home() {
           </button>
         </div>
         <div className={style.searchBar}>
-          <input style={{paddingLeft: "21px",}} placeholder="반려동물의 증상을 검색해보세요."></input>
-          <NavLink to="/search"><img src={ require('../assets/search.png') } /></NavLink>
+          <form onSubmit={() => history.push(`/search?keyword=${searchKeyword}`)}>
+            <input style={{paddingLeft: "21px",}}
+                   placeholder="반려동물의 증상을 검색해보세요."
+                   onChange={e => setSearchKeyword(e.target.value)}
+            />
+            <NavLink to="/search"><img src={ require('../assets/search.png') } /></NavLink>
+          </form>
         </div>
 
         <div className={style.home2}>
