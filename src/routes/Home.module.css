@@ -6,6 +6,7 @@
     top: 0px;
     left: calc((100% - 1440px)/2);
     margin: 0 auto;
+    min-height: 100%;
   }
   
   .background{

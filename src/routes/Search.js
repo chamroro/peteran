@@ -87,8 +87,8 @@ function SearchPage() {
           
           {(currentTab == 'all' && qnaSearchResult.length==0 && veteranSearchResult.length==0) ? 
               (<NoResult />) : null
-          }
           
+          }
           
           
           {
@@ -132,7 +132,7 @@ function SearchPage() {
                 }
               </div>
             </div>
-            ) : null
+            ) : <div style={{height: "500px"}}></div>
           }
         
 
