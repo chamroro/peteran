@@ -1,12 +1,13 @@
 .SearchPageLayout {
     /* TODO: 수정 예정 */
     /* TODO: to be responsive*/
-    padding: 10px 240px;
-}
+    padding: 36px 0;
+    width: 1050px;
+    margin: 0 auto;}
 
 @media (max-width: 991px) {
     .SearchPageLayout {
-        padding: 10px 60px;
+        width: 800px;
     }
 }
 

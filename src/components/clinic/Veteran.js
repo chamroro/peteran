@@ -27,6 +27,10 @@ function VeteranSearchBox (questionSearchResult) {
               </div>
             </div>
 
+            <div style={{marginBottom: 4}}>
+              안녕하세요, 서울대 수의학과 출신 나연주입니다.
+            </div>
+
             <div className={searchStyle.VeteranTagDiv}>
               <div className={searchStyle.VeteranTag}>
                 건강 검진
@@ -39,10 +43,10 @@ function VeteranSearchBox (questionSearchResult) {
 
           <div style={{textAlign: 'right'}}>
             <div className={searchStyle.VeteranMoreInfoText} style={{flex: 1}}>
-              더 알아보기
+              15분 35,000원
             </div>
             <div style={{color: 'gray'}}>
-              관련 후기 4개
+              반려인이 남긴 후기 45개
             </div>
           </div>
         </div>

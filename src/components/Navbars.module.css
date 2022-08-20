@@ -1,42 +1,41 @@
 
 .nav {
     z-index:100;
-    width: 100%;
+    width: 1050px;
+    margin: 0 auto;
     height: 72px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    padding: 14px 0;
   }
   
 .nav img{
     width: 126px;
     height: 28px;
-    margin-left: 125px;
-    margin-top: 25px;
+    margin-top: auto;
+    vertical-align: bottom;
 }
 
   ul{
-    list-style: none; 
-    margin-right: 125px;
-    margin-top: 25px
+    list-style: none;
   }
 
   li{
     float: right;
     padding-left: 20px;
   }
-  
+
   .nav a {
     text-decoration: none;
     color: #000000;
     font-weight: 500;
     font-size: 18px;
-    
-   
+
+
     transition: all 200ms ease;
   }
-  
+
   .nav a:hover {
     color: rgba(255,255,255,.4);
-    
+
   }
-  

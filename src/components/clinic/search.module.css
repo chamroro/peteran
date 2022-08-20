@@ -1,0 +1,94 @@
+.SearchBoxDiv {
+    box-sizing: border-box;
+    height: 120px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    /*padding: 27px;*/
+}
+
+.QuestionIcon {
+    /*height: 48px;*/
+    /*width: 48px;*/
+}
+
+.QuestionAuthorText {
+    /* Body/B3/L-16 */
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+     /*identical to box height, or 125% */
+
+    letter-spacing: 0.25px;
+
+    color: rgba(0, 0, 0, 0.6);
+    margin-right: 24px;
+}
+
+.VeteranButton {
+    padding: 10px 30px;
+    background: #DEDEDE;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.VeteranTagDiv {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.VeteranTag {
+    padding: 4px;
+
+    /* Caption/C1/R-13px */
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height, or 123% */
+
+    letter-spacing: 0.4px;
+
+    color: #FFFFFF;
+
+    /* Primary Variant/- 238D9B - 500 */
+
+    background: #238D9B;
+    border-radius: 6px;
+}
+
+.VeteranMoreInfoText {
+    /* Subtitle/S2/B-18px */
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: 0.1px;
+
+    /* Primary Variant/- 238D9B - 500 */
+
+    color: #238D9B;
+}
