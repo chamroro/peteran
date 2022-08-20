@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
@@ -7,11 +7,37 @@ import VeteranSearchBox from "../components/clinic/VeteranInfoBox";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import Footers from "../components/Footer"
+import {useHistory, useLocation} from "react-router-dom";
+import axios from "axios";
+import {API_ENDPOINT} from "../config";
 
 function ClinicPage() {
+  const location = useLocation();
+  const history = useHistory()
+  const initKeyword = new URLSearchParams(location.search).get('keyword');
+
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
-  const [searchKeyword, setSearchKeyword] = useState('슬개골 탈구')
+  const [searchKeyword, setSearchKeyword] = useState(initKeyword)
   const [sortMethod, setSortMethod] = useState('recent') // [recent, visit]
+  const [loading, setLoading] = useState(true);
+  const [searchResult, setSearchResult] = useState([]);
+
+  useEffect(() => {
+    if (!initKeyword) return;
+    axios.get(`${API_ENDPOINT}/search/veteran/${currentTab}/${searchKeyword}?take=10`)
+      .then((res) => {
+        setSearchResult(res.data);
+        console.log(res.data);
+        setLoading(false)
+      }).catch(() => {
+      alert('검색 에러!')
+    })
+  }, [initKeyword]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    history.push(`/clinic?keyword=${searchKeyword}`)
+  }
 
   return (
     <div>
@@ -40,12 +66,14 @@ function ClinicPage() {
 
           {/* TODO: search icon */}
           <div className={QnAPageStyle.QnAInputDiv}>
-            <input
-              className={QnAPageStyle.QnAInput}
-              value={searchKeyword}
-              placeholder={'검색'}
-              onChange={(e) => setSearchKeyword(e.target.value)}
-            />
+            <form onSubmit={handleSubmit} style={{width: '100%'}}>
+              <input
+                className={QnAPageStyle.QnAInput}
+                value={searchKeyword}
+                placeholder={'검색'}
+                onChange={(e) => setSearchKeyword(e.target.value)}
+              />
+            </form>
           </div>
 
           <div style={{textAlign: 'right', marginBottom: 12, gap: 12, display: 'flex'}}>
@@ -67,15 +95,17 @@ function ClinicPage() {
 
           <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
             {
-              [...Array(4).keys()].map( () => (
+              searchResult
+                .sort((a, b) => b.reservations.length - a.reservations.length)
+                .map((result) => (
                 <VeteranSearchBox
-                  name={'이정연 수의사'}
-                  location={'하나 동물 병원'}
-                  shortDescription={'안녕하세요, 포항공대 수의학과 출신 나연주입니다. 0.<'}
-                  tags={['건강 검진', '슬개골 수술']}
-                  minutesPeriod={15}
-                  price={35000}
-                  reviewNumber={4}
+                  name={result.name + ' ' + (result.type === 'vet' ? '수의사' : '훈련사')}
+                  location={result.location}
+                  shortDescription={result.short_description}
+                  tags={result.field.split(',')}
+                  minutesPeriod={result.consult_items[0].minutes_period}
+                  price={result.consult_items[0].price}
+                  reviewNumber={result.reservations.length}
                   availableStatus={true}
                 />
               ))

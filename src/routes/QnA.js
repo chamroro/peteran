@@ -5,29 +5,36 @@ import Text from "../components/Text";
 import QnaSearchBox from "../components/qna/QnAInfoBox";
 import WriteIcon from "../assets/b2.png";
 import Layout from "../components/Layout";
-import styled from "styled-components";
 import Footers from "../components/Footer"
 import { API_ENDPOINT } from "../config";
 import axios from "axios";
+import {useHistory, useLocation} from "react-router-dom";
 
 function QnAPage() {
-  const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
-  const [searchKeyword, setSearchKeyword] = useState('초콜')
+  const location = useLocation();
+  const history = useHistory()
+  const initKeyword = new URLSearchParams(location.search).get('keyword');
+
+  const [searchKeyword, setSearchKeyword] = useState(initKeyword)
   const [sortMethod, setSortMethod] = useState('recent') // [recent, visit]
   const [loading, setLoading] = useState(true);
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
+    if (!initKeyword) return;
     axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
     .then((res) => {
       setSearchResult(res.data);
       setLoading(false)
     }).catch(() => {
-      alert('에러!')
+      alert('검색 에러!')
     })
-  }, []);
+  }, [initKeyword]);
 
-  console.log(searchResult);
+  function handleSubmit(e) {
+    e.preventDefault();
+    history.push(`/qna?keyword=${searchKeyword}`)
+  }
 
   return (
     <div>
@@ -53,12 +60,14 @@ function QnAPage() {
           {/* TODO: search icon */}
          
           <div className={style.QnAInputDiv}>
-            <input
-              className={style.QnAInput}
-              value={searchKeyword}
-              placeholder={'검색'}
-              onChange={(e) => setSearchKeyword(e.target.value)}
-            />
+            <form onSubmit={handleSubmit} style={{width: '100%'}}>
+              <input
+                className={style.QnAInput}
+                value={searchKeyword}
+                placeholder={'검색'}
+                onChange={(e) => setSearchKeyword(e.target.value)}
+              />
+            </form>
           </div>
           <div style={{textAlign: 'right', marginBottom: 12, gap: 12, display: 'flex', justifyContent: 'flex-end'}}>
             <label>
@@ -79,7 +88,9 @@ function QnAPage() {
 
           <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
             {
-              searchResult.map((result) => (
+              searchResult
+                .sort((a, b) => b.answers.length - a.answers.length)
+                .map((result) => (
                 <QnaSearchBox
                   id={result.id}
                   title={result.title}
@@ -99,11 +110,3 @@ function QnAPage() {
 
 }
 export default QnAPage;
-
-const QnATab = styled.div`
-  width: 96px;
-  margin-top: auto;
-  font-size: 20px;
-  margin-bottom: 12px;
-  cursor: pointer;
-`
