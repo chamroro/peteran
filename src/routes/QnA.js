@@ -3,7 +3,7 @@ import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
-import QnaSearchBox from "../components/search/QnA";
+import QnaSearchBox from "../components/qna/QnAInfoBox";
 import WriteIcon from "../assets/b2.png";
 import Layout from "../components/Layout";
 import styled from "styled-components";
@@ -43,7 +43,6 @@ function QnAPage() {
                   글쓰기
                 </button>
             </div>
-
           </div>
 
           {/* TODO: search icon */}
@@ -74,10 +73,17 @@ function QnAPage() {
           </div>
 
           <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-            <QnaSearchBox/>
-            <QnaSearchBox/>
-            <QnaSearchBox/>
-            <QnaSearchBox/>
+            {
+              [...Array(4).keys()].map( () => (
+                <QnaSearchBox
+                  title={'5세 여아 말티즈(중성화X), 슬개골 탈구된 것 같아요'}
+                  author={'뭉이'}
+                  createDatetime={'2시간'}
+                  veteran={'강형욱 훈련가'}
+                  otherAnswers={4}
+                />
+              ))
+            }
           </div>
 
         </Layout>

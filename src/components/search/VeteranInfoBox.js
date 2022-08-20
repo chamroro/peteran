@@ -3,7 +3,7 @@ import Text from "../Text";
 import VeteranImg from '../../assets/veteran_img_1.png';
 
 
-function VeteranSearchBox (questionSearchResult) {
+function VeteranSearchBox ({name, location, tags, reviewNumber, availableStatus}) {
   return (
     <div className={searchStyle.SearchBoxDiv}>
 
@@ -20,20 +20,21 @@ function VeteranSearchBox (questionSearchResult) {
           <div style={{display: 'flex', flexDirection: 'column', flex: 1}}>
             <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
               <div style={{marginRight: 10}}>
-                <Text n={'h6'} text={'이정연 수의사'} />
+                <Text n={'h6'} text={name} />
               </div>
               <div style={{margin: 'auto 0'}}>
-                하나 동물 병원
+                {location}
               </div>
             </div>
 
             <div className={searchStyle.VeteranTagDiv}>
-              <div className={searchStyle.VeteranTag}>
-                건강 검진
-              </div>
-              <div className={searchStyle.VeteranTag}>
-                슬개골 수술
-              </div>
+              {
+                tags.map((tag) => (
+                  <div className={searchStyle.VeteranTag} key={tag}>
+                    {tag}
+                  </div>
+                ))
+              }
             </div>
           </div>
 
@@ -42,14 +43,14 @@ function VeteranSearchBox (questionSearchResult) {
               더 알아보기
             </div>
             <div style={{color: 'gray'}}>
-              관련 후기 4개
+              관련 후기 {reviewNumber}개
             </div>
           </div>
         </div>
 
         <div style={{display: 'flex', flexDirection: 'column', marginLeft: 'auto'}}>
           <button className={searchStyle.VeteranButton}>
-            준비중
+            {availableStatus ? '예약하기' : '준비중'}
           </button>
         </div>
       </div>

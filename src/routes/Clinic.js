@@ -3,7 +3,7 @@ import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
-import VeteranSearchBox from "../components/clinic/Veteran";
+import VeteranSearchBox from "../components/clinic/VeteranInfoBox";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 
@@ -65,10 +65,20 @@ function ClinicPage() {
           </div>
 
           <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-            <VeteranSearchBox/>
-            <VeteranSearchBox/>
-            <VeteranSearchBox/>
-            <VeteranSearchBox/>
+            {
+              [...Array(4).keys()].map( () => (
+                <VeteranSearchBox
+                  name={'이정연 수의사'}
+                  location={'하나 동물 병원'}
+                  shortDescription={'안녕하세요, 포항공대 수의학과 출신 나연주입니다. 0.<'}
+                  tags={['건강 검진', '슬개골 수술']}
+                  minutesPeriod={15}
+                  price={35000}
+                  reviewNumber={4}
+                  availableStatus={true}
+                />
+              ))
+            }
           </div>
 
         </Layout>
