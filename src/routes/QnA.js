@@ -9,22 +9,27 @@ import Layout from "../components/Layout";
 import styled from "styled-components";
 import Footers from "../components/Footer"
 import { API_ENDPOINT } from "../config";
+import axios from "axios";
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
-  const [searchKeyword, setSearchKeyword] = useState('슬개골 탈구')
+  const [searchKeyword, setSearchKeyword] = useState('초콜')
   const [sortMethod, setSortMethod] = useState('recent') // [recent, visit]
-  const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true);
-  const getMovies = async() => {
-    const json = await(await fetch(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)).json();
-    console.log(json.data);
-    setLoading(false);
-  }
+  const [searchResult, setSearchResult] = useState([]);
+
   useEffect(() => {
-    getMovies();
+    axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
+    .then((res) => {
+      setSearchResult(res.data);
+      setLoading(false)
+    }).catch(() => {
+      alert('에러!')
+    })
   }, []);
-  console.log(movies);
+
+  console.log(searchResult);
+
   return (
     <div>
       <div className={style.containers}>
@@ -86,13 +91,13 @@ function QnAPage() {
 
           <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
             {
-              [...Array(4).keys()].map( () => (
+              searchResult.map((result) => (
                 <QnaSearchBox
-                  title={'5세 여아 말티즈(중성화X), 슬개골 탈구된 것 같아요'}
+                  title={result.title}
                   author={'뭉이'}
                   createDatetime={'2시간'}
-                  veteran={'강형욱 훈련가'}
-                  otherAnswers={4}
+                  veteran={'강형욱'}
+                  otherAnswers={result.answers ? result.answers.length : 0}
                 />
               ))
             }
