@@ -31,6 +31,7 @@ function QnAPage() {
               </div>
             </div>
 
+            {/* TODO: search icon */}
             <div style={{display: 'flex'}}>
                 <button className={QnAPageStyle.QnAWriteButton}>
                   <img src={WriteIcon} style={{width: 24, height: 24, marginRight: 10}}/>

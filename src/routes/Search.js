@@ -15,6 +15,7 @@ function SearchPage(){
         <Navbars />
 
         <div className={SearchPageStyle.SearchPageLayout}>
+          {/* TODO: search icon */}
           <div className={SearchPageStyle.SearchInputDiv}>
             <input
               className={SearchPageStyle.SearchInput}
