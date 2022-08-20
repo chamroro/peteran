@@ -18,9 +18,12 @@ function Detail(){
     }, []);
     return (
         <div>
+      
             <Navbars />
             <div className={style.container}>
-                <Text style={{ marginBottom:"29px"}} n="h2" text="QnA"/>
+                <div style={{marginTop:"65px", marginBottom:"29px"}}>
+                    <Text  n="h2" text="QnA"/>
+                </div>
                 <div style={{ marginTop:"32px", display: "flex",
                     gap: "0px 15px"}}>
                     <Text n="b1" text="작성자" />
@@ -74,6 +77,8 @@ function Detail(){
              
             </div>
             <Footers />
+     
+       
         </div>
     );
 }
