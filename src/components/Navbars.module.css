@@ -13,32 +13,43 @@
     font-size: 50px;
     margin-top:25px;
   }
-  
-  .nav ul {
-    float: right;
-    width: 225px;
-    height: 20px;
-    left: 1050px;
-    top: 26px;
 
+  ul{
+    list-style: none; 
   }
-  
-  .nav li {
-    display: inline;
-    margin: 20px
+
+  .li1{
+
+    position: absolute;
+   
+    height: 20px;
+    left: 1090px;
+    top: 26px;
   }
+
+  .li2{
+    position: absolute;
+   
+    height: 20px;
+    left: 1164px;;
+    top: 26px;
+  }
+
+  .li3{
+    position: absolute;
   
-  .nav li:nth-child(3) {
-    margin-right: 10px;
+    height: 20px;
+    left: 1240px;
+    top: 26px;
   }
   
   .nav a {
     text-decoration: none;
-    color: #238D9B;
+    color: #000000;
     font-weight: 500;
     font-size: 18px;
     
-    padding: 8px 15px;
+   
     transition: all 200ms ease;
   }
   
