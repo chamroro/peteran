@@ -21,15 +21,15 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
 
       <div style={{padding: 27, display: 'flex', flexDirection: 'row', flex: 1}}>
         <div style={{display: 'flex', flexDirection: 'column', paddingRight: 24, flex: 1}}>
-          <div style={{flex: 1}}>
+          <div style={{flex: 1, textDecoration: 'none'}}>
             <Link to={`/qna/${id}`}>
               <Text n={'h6'} text={title} />
             </Link>
             {/* <Text n={'h6'} text={title} /> */}
           </div>
           <div style={{display: 'flex', flexDirection: 'row'}}>
-            <div style={{flex: 1}}>
-              <span className={searchStyle.QuestionAuthorText}>
+            <div style={{flex: 1, paddingTop: "5px"}}>
+              <span  className={searchStyle.QuestionAuthorText}>
                 작성자
               </span>
               {author}
@@ -40,17 +40,19 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
           </div>
         </div>
 
-        <div style={{display: 'flex', flexDirection: 'column', marginLeft: 'auto'}}>
+        <div style={{display: 'flex', flexDirection: 'column', marginLeft: 'auto', 
+          alignItems: 'flex-end'}}>
           <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
             {
               otherAnswers ? (
                 <>
-                  <div>
-                    {veteran}
-                  </div>
-                  <div style={{fontWeight: 'bold', textAlign: 'right', flex: 1}}>
+                  <div style={{textAlign: 'right', flex: 1, marginRight:19}}>
                     답변
                   </div>
+                  <div style={{color: "#238D9B"}}>
+                    {veteran}
+                  </div>
+                 
                 </>
               ) : (
                 <div>

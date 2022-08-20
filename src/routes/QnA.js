@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import style from "./QnA.module.css";
 import Navbars from "../components/Navbars";
-import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
 import QnaSearchBox from "../components/qna/QnAInfoBox";
 import WriteIcon from "../assets/b2.png";
@@ -39,24 +38,13 @@ function QnAPage() {
         <Layout>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{display: 'flex', flexDirection: 'row', flex: 1}}>
-              <div style={{marginRight: 32}}>
+              <div style={{marginRight: "32px", marginBottom: "13px"}}>
                 <Text n={'h2'} text={'QnA'} />
-              </div>
-
-              <div style={{display: 'flex', flexDirection: 'row', textAlign: 'center'}}>
-                <QnATab style={{color: currentTab === 'vet' ? 'black' : 'gray'}}
-                        onClick={() => setCurrentTab('vet')}>
-                  수의사
-                </QnATab>
-                <QnATab style={{color: currentTab === 'trainer' ? 'black' : 'gray'}}
-                        onClick={() => setCurrentTab('trainer')}>
-                  훈련사
-                </QnATab>
               </div>
             </div>
 
             <div style={{display: 'flex'}}>
-                <button className={QnAPageStyle.QnAWriteButton}>
+                <button className={style.QnAWriteButton}>
                   <img src={WriteIcon} style={{width: 24, height: 24, marginRight: 10}} alt={'write'}/>
                   글쓰기
                 </button>
@@ -65,15 +53,15 @@ function QnAPage() {
 
           {/* TODO: search icon */}
          
-          <div className={QnAPageStyle.QnAInputDiv}>
+          <div className={style.QnAInputDiv}>
             <input
-              className={QnAPageStyle.QnAInput}
+              className={style.QnAInput}
               value={searchKeyword}
               placeholder={'검색'}
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
           </div>
-          <div style={{textAlign: 'right', marginBottom: 12, gap: 12, display: 'flex'}}>
+          <div style={{textAlign: 'right', marginBottom: 12, gap: 12, display: 'flex', justifyContent: 'flex-end'}}>
             <label>
               <input type="radio" name="recent" value="recent"
                      checked={sortMethod === 'recent'}
