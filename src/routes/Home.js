@@ -108,7 +108,8 @@ function Home() {
           marginBottom:"88px",
         }}><Text n="b1" text="펫테크 시장 전체 규모를 키웁니다." color="#495057"/></div>
         <button style={{
-          backgroundColor:"#238D9B"}}
+          backgroundColor:"#238D9B",
+        marginLeft: "0px"}}
           className={style.colorButton}>
               <img className={style.buttonIcon} src={ require('../assets/b3.png') }/>
               <Text n="B" text="페테랑 전문가로서 함께하기" color="#fff"/></button>
