@@ -7,17 +7,7 @@ import Footers from "../components/Footer"
 import { NavLink } from "react-router-dom";
 
 function Home() {
-  const [movies, setMovies] = useState([])
-  const [loading, setLoading] = useState(true);
-  const getMovies = async() => {
-    const json = await(await fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year")).json();
-    setMovies(json.data.movies);
-    setLoading(false);
-  }
-  useEffect(() => {
-    getMovies();
-  }, []);
-  console.log(movies);
+  
   return (
   
       <div className={style.background}>

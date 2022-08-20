@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
@@ -8,12 +8,23 @@ import WriteIcon from "../assets/b2.png";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import Footers from "../components/Footer"
+import { API_ENDPOINT } from "../config";
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
   const [searchKeyword, setSearchKeyword] = useState('슬개골 탈구')
   const [sortMethod, setSortMethod] = useState('recent') // [recent, visit]
-
+  const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(true);
+  const getMovies = async() => {
+    const json = await(await fetch(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)).json();
+    console.log(json.data);
+    setLoading(false);
+  }
+  useEffect(() => {
+    getMovies();
+  }, []);
+  console.log(movies);
   return (
     <div>
       <div className={style.containers}>
