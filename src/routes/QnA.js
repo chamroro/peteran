@@ -10,7 +10,6 @@ import styled from "styled-components";
 import Footers from "../components/Footer"
 import { API_ENDPOINT } from "../config";
 import axios from "axios";
-import {Link} from "react-router-dom";
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
@@ -96,8 +95,8 @@ function QnAPage() {
                 <QnaSearchBox
                   id={result.id}
                   title={result.title}
-                  author={'뭉이'}
-                  createDatetime={result.create_at}
+                  author={result.author.name}
+                  createDatetime={result.created_at}
                   veteran={'강형욱'}
                   otherAnswers={result.answers ? result.answers.length : 0}
                 />

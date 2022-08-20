@@ -17,13 +17,22 @@ function SearchPage() {
   const [searchKeyword, setSearchKeyword] = useState(initKeyword)
 
   const [currentTab, setCurrentTab] = useState('all') // [all, qna, consulting]
+  const [qnaSearchResult, setQnaSearchResult] = useState([])
+  const [veteranSearchResult, setVeteranSearchResult] = useState([])
 
   useEffect(() => {
     axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
       .then(res => {
-        console.log(res.data)
+        setQnaSearchResult(res.data)
       }).catch(() => {
         alert('검색 에러!')
+    })
+
+    axios.get(`${API_ENDPOINT}/search/veteran/all/${searchKeyword}?take=10`)
+      .then(res => {
+        setVeteranSearchResult(res.data)
+      }).catch(() => {
+      alert('검색 에러!')
     })
   }, [initKeyword])
 
@@ -75,13 +84,13 @@ function SearchPage() {
 
             <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
               {
-                [...Array(4).keys()].map( () => (
+                qnaSearchResult.map((qna) => (
                   <QnaSearchBox
-                    title={'5세 여아 말티즈(중성화X), 슬개골 탈구된 것 같아요'}
-                    author={'뭉이'}
-                    createDatetime={'2시간'}
+                    title={qna.title}
+                    author={qna.author.name}
+                    createDatetime={qna.created_at}
                     veteran={'강형욱 훈련가'}
-                    otherAnswers={4}
+                    otherAnswers={qna.answers.length}
                   />
                 ))
               }
@@ -93,7 +102,7 @@ function SearchPage() {
 
             <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
               {
-                [...Array(4).keys()].map( () => (
+                veteranSearchResult.map( () => (
                   <VeteranSearchBox
                     name={'이정연 수의사'}
                     location={'하나 동물 병원'}

@@ -5,7 +5,7 @@ import moment from "moment";
 import {Link} from "react-router-dom";
 
 function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswers }) {
-  const duration = moment.duration(moment(createDatetime).diff(moment()));
+  const duration = moment.duration(moment().diff(moment(createDatetime)));
   const hours = duration.asHours();
 
   return (
@@ -22,7 +22,7 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
       <div style={{padding: 27, display: 'flex', flexDirection: 'row', flex: 1}}>
         <div style={{display: 'flex', flexDirection: 'column', paddingRight: 24, flex: 1}}>
           <div style={{flex: 1}}>
-            <Link to={`/qna/${id}`}>
+            <Link to={`/qna/${id}`} style={{textDecoration: 'none', color: '#238d9b'}}>
               <Text n={'h6'} text={title} />
             </Link>
             {/* <Text n={'h6'} text={title} /> */}
@@ -35,7 +35,7 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
               {author}
             </div>
             <div style={{color: 'gray'}}>
-              {hours} 시간 전에 작성됨
+              {Number(hours).toFixed()} 시간 전에 작성됨
             </div>
           </div>
         </div>
