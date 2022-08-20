@@ -4,9 +4,11 @@ import Text from "../Text";
 import moment from "moment";
 import {Link} from "react-router-dom";
 
-function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswers }) {
+function QnaSearchBox ({ id, title, author, createDatetime, answers }) {
   const duration = moment.duration(moment().diff(moment(createDatetime)));
   const hours = duration.asHours();
+
+  const firstAnswerVeteran = answers.length ? answers[0].veteran : {};
 
   return (
     <div className={searchStyle.SearchBoxDiv}>
@@ -43,10 +45,10 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
         <div style={{display: 'flex', flexDirection: 'column', marginLeft: 'auto'}}>
           <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
             {
-              otherAnswers ? (
+              answers.length ? (
                 <>
                   <div>
-                    {veteran}
+                    {firstAnswerVeteran.name}
                   </div>
                   <div style={{fontWeight: 'bold', textAlign: 'right', flex: 1}}>
                     답변
@@ -59,7 +61,7 @@ function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswer
               )
             }
           </div>
-          다른 전문가 답변 {otherAnswers}개
+          다른 전문가 답변 {answers.length}개
         </div>
       </div>
 

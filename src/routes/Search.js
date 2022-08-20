@@ -89,8 +89,7 @@ function SearchPage() {
                     title={qna.title}
                     author={qna.author.name}
                     createDatetime={qna.created_at}
-                    veteran={'강형욱 훈련가'}
-                    otherAnswers={qna.answers.length}
+                    answers={qna.answers}
                   />
                 ))
               }

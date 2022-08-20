@@ -97,8 +97,7 @@ function QnAPage() {
                   title={result.title}
                   author={result.author.name}
                   createDatetime={result.created_at}
-                  veteran={'강형욱'}
-                  otherAnswers={result.answers ? result.answers.length : 0}
+                  answers={result.answers}
                 />
               ))
             }
