@@ -3,18 +3,22 @@ import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
-import QnaSearchBox from "../components/search/QnA";
+import QnaSearchBox from "../components/qna/QnAInfoBox";
 import WriteIcon from "../assets/b2.png";
+import Layout from "../components/Layout";
+import styled from "styled-components";
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
+  const [searchKeyword, setSearchKeyword] = useState('슬개골 탈구')
+  const [sortMethod, setSortMethod] = useState('recent') // [recent, visit]
 
   return (
     <div>
       <div className={style.containers}>
         <Navbars />
 
-        <div className={QnAPageStyle.QnAPageLayout}>
+        <Layout>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{display: 'flex', flexDirection: 'row', flex: 1}}>
               <div style={{marginRight: 32}}>
@@ -22,48 +26,78 @@ function QnAPage() {
               </div>
 
               <div style={{display: 'flex', flexDirection: 'row', textAlign: 'center'}}>
-                <div style={{width: 96, marginTop: 'auto', fontSize: 20, marginBottom: 12, color: 'gray'}}>
+                <QnATab style={{color: currentTab === 'vet' ? 'black' : 'gray'}}
+                        onClick={() => setCurrentTab('vet')}>
                   수의사
-                </div>
-                <div style={{width: 96, marginTop: 'auto', fontSize: 20, marginBottom: 12}}>
+                </QnATab>
+                <QnATab style={{color: currentTab === 'trainer' ? 'black' : 'gray'}}
+                        onClick={() => setCurrentTab('trainer')}>
                   훈련사
-                </div>
+                </QnATab>
               </div>
             </div>
 
-            {/* TODO: search icon */}
             <div style={{display: 'flex'}}>
                 <button className={QnAPageStyle.QnAWriteButton}>
-                  <img src={WriteIcon} style={{width: 24, height: 24, marginRight: 10}}/>
+                  <img src={WriteIcon} style={{width: 24, height: 24, marginRight: 10}} alt={'write'}/>
                   글쓰기
                 </button>
             </div>
-
           </div>
 
+          {/* TODO: search icon */}
           <div className={QnAPageStyle.QnAInputDiv}>
             <input
               className={QnAPageStyle.QnAInput}
-              value={'슬개골 탈구'}
+              value={searchKeyword}
+              placeholder={'검색'}
+              onChange={(e) => setSearchKeyword(e.target.value)}
             />
           </div>
 
           <div style={{textAlign: 'right', marginBottom: 12, gap: 12, display: 'flex'}}>
-            <label><input type="radio" name="fruit" value="apple" checked/> 최신 답변순</label>
-            <label><input type="radio" name="fruit" value="banana"/> 조회순</label>
+            <label>
+              <input type="radio" name="recent" value="recent"
+                     checked={sortMethod === 'recent'}
+                     onClick={() => setSortMethod('recent')}
+              />
+              최신 답변순
+            </label>
+            <label>
+              <input type="radio" name="visit" value="visit"
+                     checked={sortMethod === 'visit'}
+                     onClick={() => setSortMethod('visit')}
+              />
+              조회순
+            </label>
           </div>
 
           <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-            <QnaSearchBox/>
-            <QnaSearchBox/>
-            <QnaSearchBox/>
-            <QnaSearchBox/>
+            {
+              [...Array(4).keys()].map( () => (
+                <QnaSearchBox
+                  title={'5세 여아 말티즈(중성화X), 슬개골 탈구된 것 같아요'}
+                  author={'뭉이'}
+                  createDatetime={'2시간'}
+                  veteran={'강형욱 훈련가'}
+                  otherAnswers={4}
+                />
+              ))
+            }
           </div>
 
-        </div>
+        </Layout>
       </div>
     </div>
   )
 
 }
 export default QnAPage;
+
+const QnATab = styled.div`
+  width: 96px;
+  margin-top: auto;
+  font-size: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+`

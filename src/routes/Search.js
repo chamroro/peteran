@@ -1,10 +1,11 @@
 import style from "./Home.module.css";
 import Navbars from "../components/Navbars";
 import {useState} from "react";
-import QnaSearchBox from "../components/search/QnA";
+import QnaSearchBox from "../components/search/QnAInfoBox";
 import SearchPageStyle from "./Search.module.css";
-import Text from "../components/Text";
-import VeteranSearchBox from "../components/search/Veteran";
+import VeteranSearchBox from "../components/search/VeteranInfoBox";
+import Layout from "../components/Layout";
+import SearchSectionHeader from "../components/search/search.section.header";
 
 function SearchPage(){
   const [currentTab, setCurrentTab] = useState('all') // [all, qna, consulting]
@@ -14,7 +15,7 @@ function SearchPage(){
       <div className={style.containers}>
         <Navbars />
 
-        <div className={SearchPageStyle.SearchPageLayout}>
+        <Layout>
           {/* TODO: search icon */}
           <div className={SearchPageStyle.SearchInputDiv}>
             <input
@@ -39,36 +40,42 @@ function SearchPage(){
           </div>
 
           <div style={{marginBottom: 52}}>
-            <div style={{display: 'flex', marginBottom: 22}}>
-              <div style={{padding: '0 13px'}}>
-                <Text n={'h6'} text={'QnA'} />
-              </div>
-              <div style={{flex: 1, borderBottom: 'solid 1px rgba(0, 0, 0, 0.3)'}}/>
-            </div>
+            <SearchSectionHeader headerText={'QnA'}/>
+
             <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-              <QnaSearchBox/>
-              <QnaSearchBox/>
-              <QnaSearchBox/>
-              <QnaSearchBox/>
+              {
+                [...Array(4).keys()].map( () => (
+                  <QnaSearchBox
+                    title={'5세 여아 말티즈(중성화X), 슬개골 탈구된 것 같아요'}
+                    author={'뭉이'}
+                    createDatetime={'2시간'}
+                    veteran={'강형욱 훈련가'}
+                    otherAnswers={4}
+                  />
+                ))
+              }
             </div>
           </div>
 
           <div>
-            <div style={{display: 'flex', marginBottom: 22}}>
-              <div style={{padding: '0 13px'}}>
-                <Text n={'h6'} text={'상담'} />
-              </div>
-              <div style={{flex: 1, borderBottom: 'solid 1px rgba(0, 0, 0, 0.3)'}}/>
-            </div>
+            <SearchSectionHeader headerText={'상담'}/>
+
             <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-              <VeteranSearchBox/>
-              <VeteranSearchBox/>
-              <VeteranSearchBox/>
-              <VeteranSearchBox/>
+              {
+                [...Array(4).keys()].map( () => (
+                  <VeteranSearchBox
+                    name={'이정연 수의사'}
+                    location={'하나 동물 병원'}
+                    tags={['건강 검진', '슬개골 수술']}
+                    reviewNumber={4}
+                    availableStatus={true}
+                  />
+                ))
+              }
             </div>
           </div>
 
-        </div>
+        </Layout>
       </div>
     </div>
   )
