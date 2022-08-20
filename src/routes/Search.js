@@ -10,6 +10,7 @@ import Footers from "../components/Footer"
 import {NavLink, useLocation} from "react-router-dom";
 import axios from "axios";
 import {API_ENDPOINT} from "../config";
+import styled from "styled-components";
 
 function SearchPage() {
   const location = useLocation();
@@ -36,7 +37,7 @@ function SearchPage() {
     })
   }, [initKeyword])
 
-  function handleSubmit() {
+  function handleSubmit(e) {
     axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
       .then(res => {
         console.log(res.data)
@@ -65,54 +66,66 @@ function SearchPage() {
           </div>
 
           <div className={SearchPageStyle.SearchTabDiv}>
-            <div className={SearchPageStyle.SearchTab}
-                 onClick={() => setCurrentTab('all')}>
+            <SearchTab
+              style={{borderBottomColor: currentTab === 'all' ? '#FDDA5A' : '#E7E7E7'}}
+              onClick={() => setCurrentTab('all')}>
               전체
-            </div>
-            <div className={SearchPageStyle.SearchTab}
-                 onClick={() => setCurrentTab('qna')}>
+            </SearchTab>
+            <SearchTab
+              style={{borderBottomColor: currentTab === 'qna' ? '#FDDA5A' : '#E7E7E7'}}
+              onClick={() => setCurrentTab('qna')}>
               QnA
-            </div>
-            <div className={SearchPageStyle.SearchTab}
-                 onClick={() => setCurrentTab('consulting')}>
-            상담
-            </div>
+            </SearchTab>
+            <SearchTab
+              style={{borderBottomColor: currentTab === 'consulting' ? '#FDDA5A' : '#E7E7E7'}}
+              onClick={() => setCurrentTab('consulting')}>
+              상담
+            </SearchTab>
           </div>
 
-          <div style={{marginBottom: 52}}>
-            <SearchSectionHeader headerText={'QnA'}/>
+          {
+            currentTab !== 'consulting' ? (
+              <div style={{marginBottom: 52}}>
+                <SearchSectionHeader headerText={`QnA (${qnaSearchResult.length})`}/>
 
-            <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-              {
-                qnaSearchResult.map((qna) => (
-                  <QnaSearchBox
-                    title={qna.title}
-                    author={qna.author.name}
-                    createDatetime={qna.created_at}
-                    answers={qna.answers}
-                  />
-                ))
-              }
-            </div>
-          </div>
+                <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
+                  {
+                    qnaSearchResult.map((qna) => (
+                      <QnaSearchBox
+                        title={qna.title}
+                        author={qna.author.name}
+                        createDatetime={qna.created_at}
+                        answers={qna.answers}
+                      />
+                    ))
+                  }
+                </div>
+              </div>
+            ) : null
+          }
 
-          <div>
-            <SearchSectionHeader headerText={'상담'}/>
+          {
+            currentTab !== 'qna' ? (
+            <div>
+              <SearchSectionHeader headerText={`상담 (${veteranSearchResult.length})`}/>
 
-            <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
-              {
-                veteranSearchResult.map( () => (
+              <div style={{display: "flex", flexDirection: 'column', gap: 20}}>
+                {
+                  veteranSearchResult.map( () => (
                   <VeteranSearchBox
-                    name={'이정연 수의사'}
-                    location={'하나 동물 병원'}
-                    tags={['건강 검진', '슬개골 수술']}
-                    reviewNumber={4}
-                    availableStatus={true}
+                  name={'이정연 수의사'}
+                  location={'하나 동물 병원'}
+                  tags={['건강 검진', '슬개골 수술']}
+                  reviewNumber={4}
+                  availableStatus={true}
                   />
-                ))
-              }
+                  ))
+                }
+              </div>
             </div>
-          </div>
+            ) : null
+          }
+
 
         </Layout>
         <Footers />
@@ -121,3 +134,24 @@ function SearchPage() {
   )
 }
 export default SearchPage;
+
+const SearchTab = styled.div`
+  flex: 1;
+  text-align: center;
+
+  /* Subtitle/S1/M-20px */
+
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+
+  letter-spacing: 0.15px;
+
+  border-bottom: solid 5px;
+  margin-bottom: 32px;
+  padding: 12px;
+  cursor: pointer;
+`
