@@ -11,6 +11,7 @@ import {NavLink, useLocation} from "react-router-dom";
 import axios from "axios";
 import {API_ENDPOINT} from "../config";
 import styled from "styled-components";
+import NoResult from "../components/NoResult";
 
 function SearchPage() {
   const location = useLocation();
@@ -82,7 +83,13 @@ function SearchPage() {
               상담
             </SearchTab>
           </div>
-
+          
+          {(currentTab == 'all' && qnaSearchResult.length==0 && veteranSearchResult.length==0) ? 
+              (<NoResult />) : null
+          }
+          
+          
+          
           {
             currentTab !== 'consulting' ? (
               <div style={{marginBottom: 52}}>
@@ -105,6 +112,7 @@ function SearchPage() {
           }
 
           {
+            
             currentTab !== 'qna' ? (
             <div>
               <SearchSectionHeader headerText={`상담 (${veteranSearchResult.length})`}/>
@@ -125,6 +133,7 @@ function SearchPage() {
             </div>
             ) : null
           }
+        
 
 
         </Layout>

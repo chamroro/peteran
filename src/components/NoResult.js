@@ -1,5 +1,5 @@
-import {No} from '../../assets/noresult.png';
-import Text from "../Text";
+import No from '../assets/noresult.png';
+import Text from "./Text";
 
 function NoResult(){
     
