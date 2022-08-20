@@ -1,12 +1,12 @@
 .QnAPageLayout {
     /* TODO: 수정 예정 */
     /* TODO: to be responsive*/
-    padding: 60px 240px;
+    padding: 36px 240px;
 }
 
 @media (max-width: 991px) {
     .QnAPageLayout {
-        padding: 60px 60px;
+        padding: 36px 60px;
     }
 }
 
