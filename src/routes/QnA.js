@@ -95,7 +95,7 @@ function QnAPage() {
                 <QnaSearchBox
                   title={result.title}
                   author={'뭉이'}
-                  createDatetime={'2시간'}
+                  createDatetime={result.create_at}
                   veteran={'강형욱'}
                   otherAnswers={result.answers ? result.answers.length : 0}
                 />

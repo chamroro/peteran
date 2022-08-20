@@ -1,8 +1,12 @@
 import searchStyle from './search.module.css';
 import QuestionIcon from '../../assets/Q.png';
 import Text from "../Text";
+import moment from "moment";
 
 function QnaSearchBox ({ title, author, createDatetime, veteran, otherAnswers }) {
+  const duration = moment.duration(moment(createDatetime).diff(moment()));
+  const hours = duration.asHours();
+
   return (
     <div className={searchStyle.SearchBoxDiv}>
 
@@ -27,19 +31,29 @@ function QnaSearchBox ({ title, author, createDatetime, veteran, otherAnswers })
               {author}
             </div>
             <div style={{color: 'gray'}}>
-              {createDatetime} 전에 작성됨
+              {hours} 시간 전에 작성됨
             </div>
           </div>
         </div>
 
         <div style={{display: 'flex', flexDirection: 'column', marginLeft: 'auto'}}>
           <div style={{flex: 1, display: 'flex', flexDirection: 'row'}}>
-            <div>
-              {veteran}
-            </div>
-            <div style={{fontWeight: 'bold', textAlign: 'right', flex: 1}}>
-              답변
-            </div>
+            {
+              otherAnswers ? (
+                <>
+                  <div>
+                    {veteran}
+                  </div>
+                  <div style={{fontWeight: 'bold', textAlign: 'right', flex: 1}}>
+                    답변
+                  </div>
+                </>
+              ) : (
+                <div>
+                  답변 없음
+                </div>
+              )
+            }
           </div>
           다른 전문가 답변 {otherAnswers}개
         </div>
