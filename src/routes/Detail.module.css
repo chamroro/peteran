@@ -1,0 +1,9 @@
+.container{
+    position: absolute;
+    width: 1050px;
+    top: 137px;
+    left: calc((100% - 1050px)/2);
+    margin: 0 auto;
+   
+}
+

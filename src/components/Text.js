@@ -75,7 +75,7 @@ function Text({n, color, text}){
             style={{
                 color: {color},
                 fontFamily: "'Noto Sans', sans-serif",
-                fontWeight: "500",
+                fontWeight: "400",
                 fontSize: "18px",
                 lineHeight: "24px",
                 letterSpacing: "0.5px"
