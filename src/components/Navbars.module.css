@@ -6,13 +6,12 @@
     height: 72px;
     display: flex;
     flex-direction: row;
-    padding: 14px 0;
   }
   
 .nav img{
     width: 126px;
     height: 28px;
-    margin-top: auto;
+    margin-top: 25px;
     vertical-align: bottom;
 }
 
@@ -22,7 +21,7 @@
 
   li{
     float: right;
-    padding-left: 20px;
+    padding-left: 40px;
   }
 
   .nav a {

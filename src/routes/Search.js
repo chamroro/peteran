@@ -7,6 +7,8 @@ import VeteranSearchBox from "../components/search/VeteranInfoBox";
 import Layout from "../components/Layout";
 import SearchSectionHeader from "../components/search/search.section.header";
 import Footers from "../components/Footer"
+import { NavLink } from "react-router-dom";
+
 
 function SearchPage(){
   const [currentTab, setCurrentTab] = useState('all') // [all, qna, consulting]
@@ -22,7 +24,11 @@ function SearchPage(){
             <input
               className={SearchPageStyle.SearchInput}
               value={'슬개골 탈구'}
+
             />
+            <div className={SearchPageStyle.SearchIcon}><NavLink to="/search"><img src={ require('../assets/search.png') } /></NavLink></div>
+
+
           </div>
 
           <div className={SearchPageStyle.SearchTabDiv}>

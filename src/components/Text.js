@@ -51,7 +51,7 @@ function Text({n, color, text}){
                 fontFamily: "'Noto Sans', sans-serif",
                 fontWeight: "700",
                 fontSize: "24px",
-                lineHeight: "24px",
+                lineHeight: "30px",
                 }}>
                 {text}</a>
         );

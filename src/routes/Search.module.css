@@ -7,9 +7,7 @@
 
 .SearchInput {
     padding: 18px;
-
     box-sizing: border-box;
-
     width: 700px;
     height: 60px;
 
@@ -28,6 +26,18 @@
     /* identical to box height, or 133% */
 
     letter-spacing: 0.5px;
+}
+
+.SearchIcon{
+    position: relative;
+    right: 50px;
+    top:15px
+  
+}
+
+.SearchIcon img{
+    width: 26px;
+    height: 26px;
 }
 
 .SearchTabDiv {

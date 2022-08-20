@@ -6,11 +6,10 @@ import Text from './Text'
 import PeteranLogo from '../assets/logo.png'
 
 function Navbars () {
-
     return (
         <div className={styles.nav}>
           <div style={{flex: 1, display: 'flex'}}>
-            <img src={ PeteranLogo } alt={'peteran_logo'} style={{paddingTop: 'auto'}}/>
+            <NavLink to="/"><img src={ PeteranLogo } alt={'peteran_logo'} style={{paddingTop: 'auto'}}/></NavLink>
           </div>
 
           <div>

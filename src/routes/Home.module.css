@@ -20,11 +20,22 @@
     font-weight: 300;
   }
   
+  .bigTitle{
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 65%;
+
+    color: #212529;
+
+  }
  
 
   .buttonIcon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 
   }
   
@@ -52,6 +63,7 @@
     color:white;
     background: #B00020;
     border-radius: 40px;
+    border: none;
   }
 
   .searchBar input{
@@ -61,11 +73,42 @@
     height: 60px;
     left: 370px;
     top: 653px;
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: 0.5px;
+
+
     
     /* Primary Variant/- 238D9B - 500 */
     
     border: 2px solid #238D9B;
     border-radius: 10px;
+  }
+
+  input::placeholder {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    color: rgba(0, 0, 0, 0.6);
+    
+  }
+
+  .searchBar img {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 1028px;
+    top: 670px;
   }
 
   .card1{
@@ -129,7 +172,7 @@
     position: absolute;
     width: 360px;
     height: 207px;
-    left: 920px;
+    left: 930px;
     top: 1003px;
     text-align:  center;
   }
@@ -179,6 +222,11 @@ margin: 0px auto;
   left: 0px;
   top: 2290px;
   width: 100%
+}
+
+.primaryC{
+  color: #00856F;
+
 }
   @media screen and (max-width: 1090px) {
     .movies {

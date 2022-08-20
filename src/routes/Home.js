@@ -4,6 +4,7 @@ import Movie from "../components/Movie";
 import Text from "../components/Text";
 import Navbars from "../components/Navbars"
 import Footers from "../components/Footer"
+import { NavLink } from "react-router-dom";
 
 function Home() {
   const [movies, setMovies] = useState([])
@@ -31,7 +32,7 @@ function Home() {
             zIndex:-1
           }}
         src={ require('../assets/yellowrec.png') } />
-        <Navbars />
+        
         <div className={style.greyBackground}>
         </div>
         <img 
@@ -57,19 +58,20 @@ function Home() {
         src={ require('../assets/homebg.png') } />
       
         <div className={style.blockText}>
-          <div><Text n="B" text="반려동물 상담 👋" color="#238D9B"/></div>
-          <div style={{paddingTop: "21px", paddingBottom: "24px;"}}><Text n="h2" text="진료부터 행동교정까지," color="#238D9B"/></div>
-          <div><Text n="h2" text="처음부터 페테랑하자" color="#238D9B"/></div>
+        
+          <h1 className={style.bigTitle}>진료부터 행동교정까지,</h1>
+          <h1 className={style.bigTitle}>처음부터 <strong>페테랑</strong> 하자</h1>
           
-          <div style={{paddingTop: "24px"}}><Text n="b1" text="주말 야간에 우리집 댕댕이가 아프다면?" color="#495057"/></div>
+          <div style={{paddingTop: "14px"}}><Text n="b1" text="주말 야간에 우리집 댕댕이가 아프다면?" color="#495057"/></div>
           <div><Text n="b1" text="기다림 없이 수의사와 연결해드릴게요." color="#495057"/></div>
-          <button style={{marginTop: "34px"}} className={style.redButton}>
+          <button style={{marginTop: "36px"}} className={style.redButton}>
             <img className={style.buttonIcon} src={ require('../assets/b1.png') }/>
             <Text n="B" text="응급상담하기" color="#fff"/>
           </button>
         </div>
         <div className={style.searchBar}>
-          <input style={{paddingLeft: "10px"}} placeholder="검색"></input>
+          <input style={{paddingLeft: "21px",}} placeholder="반려동물의 증상을 검색해보세요."></input>
+          <NavLink to="/search"><img src={ require('../assets/search.png') } /></NavLink>
         </div>
 
         <div className={style.home2}>
@@ -90,12 +92,12 @@ function Home() {
           </div>
           <div className={style.card4}>
           <img src={ require('../assets/check.png') }/>
-            <div><Text n="h6" text="훈련사님, 분리분안은 어떻게 고칠 수 있을까요?" color=" "/></div>
+            <div><Text n="h6" text="훈련사님, 분리불안은 어떻게 고칠 수 있을까요?" color=" "/></div>
             <div><Text n="b3" text="애착 증세가 심한 강아지군요. 견주분께서 집을 나갈 때 보통 어떤 행동을 보이나요?" color=" "/></div>
           </div>
         </div>
         <div className={style.home2side}>
-          <div><Text n="c" text="서비스 소개" color="#00856F"/></div>
+          <div className={style.primaryC}><Text n="c" text="서비스 소개" color="#00856F"/></div>
           <div style={{marginTop:"10px"}}><Text n="h4" text="우리집 고양이의" color="#00856F"/></div>
           <div style={{marginBottom:"25px"}}><Text n="h4" text="행동이 궁금하다면?" color="#00856F"/></div>
           <button style={{
@@ -110,11 +112,11 @@ function Home() {
           <div><h2 style={{
             fontWeight: "700",
             fontSize: "52px",
-            lineHeight: "52px",
+            lineHeight: "55px",
             letterSpacing: "-0.5px",
             color: "#212529",
             margin: "10px 0px"
-          }}>펫테랑</h2></div>
+          }}>페테랑</h2></div>
           
           <div style={{
             color: "#495057",
@@ -133,6 +135,7 @@ function Home() {
           
         </div>
         <img className={style.home3img} src={ require('../assets/home3.png') } />
+        <Navbars />
         <div className={style.footer}> <Footers /></div>
         </div> 
    
