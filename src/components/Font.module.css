@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+.kor{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.en{
+  font-family: 'Aboreto', cursive;
+}
