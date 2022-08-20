@@ -7,7 +7,7 @@ import VeteranSearchBox from "../components/search/VeteranInfoBox";
 import Layout from "../components/Layout";
 import SearchSectionHeader from "../components/search/search.section.header";
 import Footers from "../components/Footer"
-import {NavLink, useLocation} from "react-router-dom";
+import {NavLink, useHistory, useLocation} from "react-router-dom";
 import axios from "axios";
 import {API_ENDPOINT} from "../config";
 import styled from "styled-components";
@@ -15,6 +15,7 @@ import NoResult from "../components/NoResult";
 
 function SearchPage() {
   const location = useLocation();
+  const history = useHistory()
   const initKeyword = new URLSearchParams(location.search).get('keyword');
   const [searchKeyword, setSearchKeyword] = useState(initKeyword)
 
@@ -23,6 +24,7 @@ function SearchPage() {
   const [veteranSearchResult, setVeteranSearchResult] = useState([])
 
   useEffect(() => {
+    if (!initKeyword) return;
     axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
       .then(res => {
         setQnaSearchResult(res.data)
@@ -40,12 +42,8 @@ function SearchPage() {
   }, [initKeyword])
 
   function handleSubmit(e) {
-    axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
-      .then(res => {
-        console.log(res.data)
-      }).catch(() => {
-      alert('검색 에러!')
-    })
+    e.preventDefault();
+    history.push(`/search?keyword=${searchKeyword}`)
   }
 
   return (
