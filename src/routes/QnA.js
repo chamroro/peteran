@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import style from "./Home.module.css";
+import style from "./QnA.module.css";
 import Navbars from "../components/Navbars";
 import QnAPageStyle from "./QnA.module.css";
 import Text from "../components/Text";
@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Footers from "../components/Footer"
 import { API_ENDPOINT } from "../config";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 function QnAPage() {
   const [currentTab, setCurrentTab] = useState('vet') // [vet, trainer]
@@ -63,6 +64,7 @@ function QnAPage() {
           </div>
 
           {/* TODO: search icon */}
+         
           <div className={QnAPageStyle.QnAInputDiv}>
             <input
               className={QnAPageStyle.QnAInput}
@@ -71,7 +73,6 @@ function QnAPage() {
               onChange={(e) => setSearchKeyword(e.target.value)}
             />
           </div>
-
           <div style={{textAlign: 'right', marginBottom: 12, gap: 12, display: 'flex'}}>
             <label>
               <input type="radio" name="recent" value="recent"
@@ -93,6 +94,7 @@ function QnAPage() {
             {
               searchResult.map((result) => (
                 <QnaSearchBox
+                  id={result.id}
                   title={result.title}
                   author={'뭉이'}
                   createDatetime={result.create_at}

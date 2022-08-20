@@ -4,7 +4,7 @@
     top: 137px;
     left: calc((100% - 1050px)/2);
     margin: 0 auto;
-   
+   height: 100%;
 }
 
 .answer{

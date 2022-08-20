@@ -2,8 +2,9 @@ import searchStyle from './search.module.css';
 import QuestionIcon from '../../assets/Q.png';
 import Text from "../Text";
 import moment from "moment";
+import {Link} from "react-router-dom";
 
-function QnaSearchBox ({ title, author, createDatetime, veteran, otherAnswers }) {
+function QnaSearchBox ({ id, title, author, createDatetime, veteran, otherAnswers }) {
   const duration = moment.duration(moment(createDatetime).diff(moment()));
   const hours = duration.asHours();
 
@@ -21,7 +22,10 @@ function QnaSearchBox ({ title, author, createDatetime, veteran, otherAnswers })
       <div style={{padding: 27, display: 'flex', flexDirection: 'row', flex: 1}}>
         <div style={{display: 'flex', flexDirection: 'column', paddingRight: 24, flex: 1}}>
           <div style={{flex: 1}}>
-            <Text n={'h6'} text={title} />
+            <Link to={`/qna/${id}`}>
+              <Text n={'h6'} text={title} />
+            </Link>
+            {/* <Text n={'h6'} text={title} /> */}
           </div>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{flex: 1}}>
