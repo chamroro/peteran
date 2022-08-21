@@ -92,6 +92,7 @@ function QnAPage() {
                 .sort((a, b) => b.answers.length - a.answers.length)
                 .map((result) => (
                 <QnaSearchBox
+                  key={searchKeyword}
                   id={result.id}
                   title={result.title}
                   author={result.author.name}

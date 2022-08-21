@@ -4,7 +4,7 @@ import Text from "../Text";
 import moment from "moment";
 import {Link} from "react-router-dom";
 
-function QnaSearchBox ({ id, title, author, createDatetime, answers }) {
+function QnaSearchBox ({ keyword, id, title, author, createDatetime, answers }) {
   const duration = moment.duration(moment().diff(moment(createDatetime)));
   const hours = duration.asHours();
 
