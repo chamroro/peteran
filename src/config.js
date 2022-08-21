@@ -1,1 +1,1 @@
-export const API_ENDPOINT = "http://3.35.156.67:4000"
+export const API_ENDPOINT = "https://api.peteran.bluehorn07.dev"
