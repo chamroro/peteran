@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
-    "gh-pages": "^4.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -43,5 +42,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https:/chamroro.github.io/peteran"
+  "homepage": "https://chamroro.github.io/peteran",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
 }
