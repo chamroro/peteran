@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/peteran/static/css/main.5123b817.css",
-    "main.js": "/peteran/static/js/main.072b1077.js",
+    "main.css": "/peteran/static/css/main.5a12e0fc.css",
+    "main.js": "/peteran/static/js/main.205b90fd.js",
     "static/media/homebg.png": "/peteran/static/media/homebg.d84dd48b6e0496eb0174.png",
     "static/media/home3.png": "/peteran/static/media/home3.23b8cefd9dcb128b3b93.png",
     "static/media/veteran_img_1.png": "/peteran/static/media/veteran_img_1.450d1879822caba49327.png",
@@ -9,11 +9,11 @@
     "static/media/footerlogo.png": "/peteran/static/media/footerlogo.86cce43266d7e8eea398.png",
     "static/media/logo.png": "/peteran/static/media/logo.82d2d4ee8062a490daf4.png",
     "index.html": "/peteran/index.html",
-    "main.5123b817.css.map": "/peteran/static/css/main.5123b817.css.map",
-    "main.072b1077.js.map": "/peteran/static/js/main.072b1077.js.map"
+    "main.5a12e0fc.css.map": "/peteran/static/css/main.5a12e0fc.css.map",
+    "main.205b90fd.js.map": "/peteran/static/js/main.205b90fd.js.map"
   },
   "entrypoints": [
-    "static/css/main.5123b817.css",
-    "static/js/main.072b1077.js"
+    "static/css/main.5a12e0fc.css",
+    "static/js/main.205b90fd.js"
   ]
 }
