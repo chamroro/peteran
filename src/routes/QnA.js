@@ -21,8 +21,11 @@ function QnAPage() {
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
-    if (!initKeyword) return;
-    axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
+    let apiUrl = `${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`
+    if (!initKeyword) {
+      apiUrl = `${API_ENDPOINT}/search/qna?take=10`
+    }
+    axios.get(apiUrl)
     .then((res) => {
       setSearchResult(res.data);
       setLoading(false)

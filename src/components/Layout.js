@@ -14,7 +14,7 @@ const LayoutDiv = styled.div`
   padding: 36px 0;
   width: 1050px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100vh;
 
   @media (max-width: 991px) {
     width: 800px;
