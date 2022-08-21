@@ -24,21 +24,34 @@ function SearchPage() {
   const [veteranSearchResult, setVeteranSearchResult] = useState([])
 
   useEffect(() => {
-    if (!initKeyword) return;
-    axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
-      .then(res => {
-        setQnaSearchResult(res.data)
-      }).catch(() => {
+    if (!initKeyword) {
+      axios.get(`${API_ENDPOINT}/search/qna?take=10`)
+        .then(res => {
+          setQnaSearchResult(res.data)
+        }).catch(() => {
         alert('검색 에러!')
-    })
+      })
+      axios.get(`${API_ENDPOINT}/search/veteran/all?take=10`)
+        .then(res => {
+          setVeteranSearchResult(res.data)
+        }).catch(() => {
+        alert('검색 에러!')
+      })
+    } else {
+      axios.get(`${API_ENDPOINT}/search/qna/${searchKeyword}?take=10`)
+        .then(res => {
+          setQnaSearchResult(res.data)
+        }).catch(() => {
+        alert('검색 에러!')
+      })
 
-    axios.get(`${API_ENDPOINT}/search/veteran/all/${searchKeyword}?take=10`)
-      .then(res => {
-        setVeteranSearchResult(res.data)
-        console.log(res.data);
-      }).catch(() => {
-      alert('검색 에러!')
-    })
+      axios.get(`${API_ENDPOINT}/search/veteran/all/${searchKeyword}?take=10`)
+        .then(res => {
+          setVeteranSearchResult(res.data)
+        }).catch(() => {
+        alert('검색 에러!')
+      })
+    }
   }, [initKeyword])
 
   function handleSubmit(e) {
@@ -122,7 +135,7 @@ function SearchPage() {
                     <VeteranSearchBox
                       name={veteran.name + ' ' + (veteran.type === 'vet' ? '수의사' : '훈련사')}
                       location={veteran.location}
-                      tags={veteran.field.split(',')}
+                      tags={Array.isArray(veteran.field) ? veteran.field : veteran.field.split(',')}
                       reviewNumber={veteran.reservations.length}
                       availableStatus={true}
                     />

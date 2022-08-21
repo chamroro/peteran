@@ -23,8 +23,11 @@ function ClinicPage() {
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
-    if (!initKeyword) return;
-    axios.get(`${API_ENDPOINT}/search/veteran/${currentTab}/${searchKeyword}?take=10`)
+    let apiUrl = `${API_ENDPOINT}/search/veteran/${currentTab}/${searchKeyword}?take=10`
+    if (!initKeyword) {
+      apiUrl = `${API_ENDPOINT}/search/veteran/${currentTab}?take=10`
+    }
+    axios.get(apiUrl)
       .then((res) => {
         setSearchResult(res.data);
         console.log(res.data);
@@ -102,7 +105,7 @@ function ClinicPage() {
                   name={result.name + ' ' + (result.type === 'vet' ? '수의사' : '훈련사')}
                   location={result.location}
                   shortDescription={result.short_description}
-                  tags={result.field.split(',')}
+                  tags={Array.isArray(result.field) ? result.field : result.field.split(',')}
                   minutesPeriod={result.consult_items[0].minutes_period}
                   price={result.consult_items[0].price}
                   reviewNumber={result.reservations.length}
