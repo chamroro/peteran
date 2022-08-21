@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "peteran-frontend",
+      "script": "npm",
+      "args": "run start"
+    }
+  ]
+}
