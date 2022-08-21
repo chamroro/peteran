@@ -17,7 +17,6 @@ function QnAPage() {
 
   const [searchKeyword, setSearchKeyword] = useState(initKeyword)
   const [sortMethod, setSortMethod] = useState('recent') // [recent, visit]
-  const [loading, setLoading] = useState(true);
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ function QnAPage() {
     axios.get(apiUrl)
     .then((res) => {
       setSearchResult(res.data);
-      setLoading(false)
     }).catch(() => {
       alert('검색 에러!')
     })
