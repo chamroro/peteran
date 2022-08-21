@@ -48,13 +48,13 @@ function QnaSearchBox ({ keyword, id, title, author, createDatetime, answers }) 
             {
               answers.length ? (
                 <>
-               
-                  <div style={{textAlign: 'right', flex: 1}}>
+                  <div style={{color: "#238D9B"}}>
+                    {firstAnswerVeteran.name}
+                  </div>
+                  <div style={{textAlign: 'right', flex: 1, paddingLeft: 10}}>
                     답변
                   </div>
-                  <div style={{color: "#238D9B"}}>
-                  {firstAnswerVeteran.name}
-                  </div>
+                 
                  
                 </>
               ) : (

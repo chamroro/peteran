@@ -4,6 +4,7 @@ import Text from "../components/Text";
 import Navbars from "../components/Navbars"
 import Footers from "../components/Footer"
 import {NavLink, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function Home() {
   const history = useHistory()
@@ -94,10 +95,10 @@ function Home() {
           <div className={style.primaryC}><Text n="c" text="서비스 소개" color="#00856F"/></div>
           <div style={{marginTop:"10px"}}><Text n="h4" text="우리집 고양이의" color="#00856F"/></div>
           <div style={{marginBottom:"25px"}}><Text n="h4" text="행동이 궁금하다면?" color="#00856F"/></div>
-          <button style={{
+          <Link to="/qna"><button style={{
             backgroundColor:"#1D6A72"}} className={style.colorButton}>
                 <img className={style.buttonIcon} src={ require('../assets/b2.png') }/>
-              <Text n="B" text="다른 질문 더 보러가기" color="#fff"/></button>
+              <Text n="B" text="다른 질문 더 보러가기" color="#fff"/></button></Link>
         </div>
       
         <div className={style.home3}>

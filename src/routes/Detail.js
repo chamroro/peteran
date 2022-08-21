@@ -56,8 +56,9 @@ function Detail(){
                                <div className={style.cardHeader}>
                                    <div className={style.cardVeteran}>
                                        <img style={{width:"70px", height:"70px", marginRight: "23px"}} src={ require('../assets/veteran_img_1.png') } />
-                                       <Text n="h6" text={answer.veteran.name} />
-                                       <Text n="b3" text={answer.veteran.location} />
+                                       <div><Text n="h6" text={answer.veteran.name} /></div>
+
+                                       <div style={{paddingLeft:10}}><Text n="b3" text={answer.veteran.location} /></div>
                                    </div>
                                    <hr></hr>
                                    <Text n="b1" text={answer.content} />
