@@ -9,22 +9,25 @@ import axios from "axios";
 
 function Detail(){
     const {id} = useParams();
-    const [qna, setQna]= useState([]);
-    const getQna = async() => {
-        axios.get(`${API_ENDPOINT}/qna/${id}`)
-        .then((res) => {
-            setQna(res.data);
-            console.log(qna);
-          }).catch(() => {
-            console.log("sdlkfsldkfn")
-            alert('검색 에러!')
-            
-          })
-    };
-   
+    const [qna, setQna]= useState(null);
+
     useEffect(() => {
-        getQna();
+      axios.get(`${API_ENDPOINT}/qna/${id}`)
+        .then((res) => {
+          setQna(res.data);
+          console.log(qna);
+        }).catch(() => {
+        alert('검색 에러!')
+      })
     }, [id]);
+
+    if (!qna) return (
+      <div>
+        <Navbars />
+        <Footers/>
+      </div>
+    )
+
     return (
         <div>
             <Navbars />
@@ -35,20 +38,20 @@ function Detail(){
                 <div style={{ marginTop:"32px", display: "flex",
                     gap: "0px 15px"}}>
                     <Text n="b1" text="작성자" />
-                   <Text n="b1" text={qna.user.name} color= "" /> 
+                   <Text n="b1" text={qna.user.name} color= "" />
                 </div>
                 <div style={{ marginTop:"21px", marginBottom:"37px"}}>
                     <Text n="h4" text={qna.title}/>
                 </div>
-                <div style={{marginBottom:"83px"}}>   
+                <div style={{marginBottom:"83px"}}>
                     <Text n="b1" text={qna.content} />
                 </div>
-               
-            {   
-               
+
+            {
+
                            qna.answers
                            .map((answer) => (
-                            
+
                                <div className={style.answer}>
                                <div className={style.cardHeader}>
                                    <div className={style.cardVeteran}>
@@ -66,8 +69,8 @@ function Detail(){
                                    <div>
                                        <h3>반려동물의 진료부터 행동교정까지 고민중이라면?  </h3>
                                        <h3><strong>{answer.veteran.name} {(answer.veteran.type === 'vet' ? '수의사' : '훈련사')}</strong>와 상담해보세요.  </h3>
-                        
-                        
+
+
                                    </div>
                                    <div style={{display: "flex",}}>
                                        <div className={style.review}>
@@ -80,13 +83,13 @@ function Detail(){
                                    </div>
                                </div>
                                <div>
-    
+
                                </div>
                                </div>
                            ))
-                       } 
-              
-             
+                       }
+
+
          </div>
            <Footers />
      
